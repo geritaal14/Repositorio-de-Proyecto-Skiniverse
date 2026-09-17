@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Panel de Cliente - Skiniverse";
+}
+
+<div class="container py-5">
+    <!-- Encabezado de Bienvenida Estilo Dashboard -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="p-5 rounded-4 shadow-sm text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);">
+                <div class="position-relative z-1">
+                    <span class="badge bg-white text-primary px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">Área de Clientes</span>
+                    <h1 class="fw-bold display-5 mb-2">¡Hola de nuevo!</h1>
+                    <p class="lead mb-0 text-white-50" style="max-width: 600px;">
+                        Bienvenido a tu panel personal en Skiniverse. Desde aquí puedes controlar tus compras, ajustar tu información y descubrir nuevos productos.
+                    </p>
+                </div>
+                <!-- Elemento decorativo de fondo -->
+                <div class="position-absolute end-0 bottom-0 opacity-10 translate-middle-y me-4 d-none d-md-block">
+                    <i class="bi bi-shield-check display-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas de Funcionalidades del Cliente -->
+    <div class="row g-4">
+        <!-- Tarjeta 1: Ver Catálogo (El botón principal que pedías) -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card border-0 shadow-sm h-100 rounded-4 action-card bg-white border-top border-primary border-4">
+                <div class="card-body p-4 d-flex flex-column text-center">
+                    <div class="mb-3 text-primary bg-primary bg-opacity-10 p-3 rounded-circle mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-grid-3x3-gap-fill fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-dark mb-2">Catálogo</h3>
+                    <p class="text-muted small mb-4">Explora todos los productos de skincare disponibles para ti.</p>
+                    <a asp-controller="Productos" asp-action="Index" class="btn btn-primary w-100 mt-auto rounded-pill py-2 fw-semibold shadow-sm">Ver Catálogo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2: Mis Pedidos -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card border-0 shadow-sm h-100 rounded-4 action-card bg-white border-top border-success border-4">
+                <div class="card-body p-4 d-flex flex-column text-center">
+                    <div class="mb-3 text-success bg-success bg-opacity-10 p-3 rounded-circle mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-box-seam fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-dark mb-2">Mis Pedidos</h3>
+                    <p class="text-muted small mb-4">Revisa el historial de tus compras y el estado de tus envíos.</p>
+                    <a href="#" class="btn btn-outline-success w-100 mt-auto rounded-pill py-2 fw-semibold">Consultar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3: Mi Perfil -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card border-0 shadow-sm h-100 rounded-4 action-card bg-white border-top border-warning border-4">
+                <div class="card-body p-4 d-flex flex-column text-center">
+                    <div class="mb-3 text-warning bg-warning bg-opacity-10 p-3 rounded-circle mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-person-gear fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-dark mb-2">Mi Perfil</h3>
+                    <p class="text-muted small mb-4">Actualiza tus datos personales y tus direcciones de entrega.</p>
+                    <a href="#" class="btn btn-outline-warning text-dark w-100 mt-auto rounded-pill py-2 fw-semibold">Editar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 4: Mis Favoritos -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card border-0 shadow-sm h-100 rounded-4 action-card bg-white border-top border-danger border-4">
+                <div class="card-body p-4 d-flex flex-column text-center">
+                    <div class="mb-3 text-danger bg-danger bg-opacity-10 p-3 rounded-circle mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-heart-fill fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-dark mb-2">Favoritos</h3>
+                    <p class="text-muted small mb-4">Guarda y consulta tus productos y rutinas preferidas.</p>
+                    <a href="#" class="btn btn-outline-danger w-100 mt-auto rounded-pill py-2 fw-semibold">Ver Favoritos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .action-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+            .action-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.08) !important;
+            }
+    </style>
+}
