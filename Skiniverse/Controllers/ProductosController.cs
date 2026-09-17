@@ -18,11 +18,12 @@ namespace Skiniverse.Controllers
         public IActionResult Catalogo(string? categoria)
         {
             List<Producto> listaProductos = new List<Producto>();
-            string conexionString = _configuration.GetConnectionString("ConexionSQL");
+            IConfiguration _configuration1 = _configuration;
+            string? conexionString = _configuration1.GetConnectionString("ConexionSQL");
 
             using (SqlConnection conexion = new SqlConnection(conexionString))
             {
-                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Producto";
+                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Productos";
 
                 if (!string.IsNullOrEmpty(categoria))
                 {
@@ -54,11 +55,11 @@ namespace Skiniverse.Controllers
         public IActionResult Admin()
         {
             List<Producto> listaProductos = new List<Producto>();
-            string conexionString = _configuration.GetConnectionString("ConexionSQL");
+            string? conexionString = _configuration.GetConnectionString("ConexionSQL");
 
             using (SqlConnection conexion = new SqlConnection(conexionString))
             {
-                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Producto";
+                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Productos";
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
@@ -91,12 +92,12 @@ namespace Skiniverse.Controllers
         // GET: /Productos/Detalles/5
         public IActionResult Detalles(int id)
         {
-            Producto producto = null;
-            string conexionString = _configuration.GetConnectionString("ConexionSQL");
+            Producto? producto = null;
+            string? conexionString = _configuration.GetConnectionString("ConexionSQL");
 
             using (SqlConnection conexion = new SqlConnection(conexionString))
             {
-                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Producto WHERE IdProducto = @Id";
+                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Productos WHERE IdProducto = @Id";
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
@@ -132,7 +133,7 @@ namespace Skiniverse.Controllers
         {
             if (ModelState.IsValid)
             {
-                string conexionString = _configuration.GetConnectionString("ConexionSQL");
+                string? conexionString = _configuration.GetConnectionString("ConexionSQL");
 
                 using (SqlConnection conexion = new SqlConnection(conexionString))
                 {
@@ -150,7 +151,7 @@ namespace Skiniverse.Controllers
                     cmd.Parameters.AddWithValue("@IngredientesActivos", producto.IngredientesActivos);
                     cmd.Parameters.AddWithValue("@PrecioRegular", producto.PrecioRegular);
                     cmd.Parameters.AddWithValue("@StockActual", producto.StockActual);
-                    cmd.Parameters.AddWithValue("@ImagenUrl", (object)producto.ImagenUrl ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ImagenUrl", producto.ImagenUrl as object ?? DBNull.Value);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -164,12 +165,12 @@ namespace Skiniverse.Controllers
         // GET: /Productos/Editar/5
         public IActionResult Editar(int id)
         {
-            Producto producto = null;
-            string conexionString = _configuration.GetConnectionString("ConexionSQL");
+            Producto? producto = null;
+            string? conexionString = _configuration.GetConnectionString("ConexionSQL");
 
             using (SqlConnection conexion = new SqlConnection(conexionString))
             {
-                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Producto WHERE IdProducto = @Id";
+                string query = "SELECT IdProducto, NombreProducto, Categoria, TipoPielRecomendado, IngredientesActivos, PrecioRegular, StockActual, ImagenUrl FROM Productos WHERE IdProducto = @Id";
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
@@ -195,11 +196,11 @@ namespace Skiniverse.Controllers
         {
             if (ModelState.IsValid)
             {
-                string conexionString = _configuration.GetConnectionString("ConexionSQL");
+                string? conexionString = _configuration.GetConnectionString("ConexionSQL");
 
                 using (SqlConnection conexion = new SqlConnection(conexionString))
                 {
-                    string query = @"UPDATE Producto 
+                    string query = @"UPDATE Productos 
                                     SET NombreProducto = @NombreProducto, 
                                         Categoria = @Categoria, 
                                         TipoPielRecomendado = @TipoPielRecomendado, 
@@ -219,7 +220,7 @@ namespace Skiniverse.Controllers
                     cmd.Parameters.AddWithValue("@IngredientesActivos", producto.IngredientesActivos);
                     cmd.Parameters.AddWithValue("@PrecioRegular", producto.PrecioRegular);
                     cmd.Parameters.AddWithValue("@StockActual", producto.StockActual);
-                    cmd.Parameters.AddWithValue("@ImagenUrl", (object)producto.ImagenUrl ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ImagenUrl", producto.ImagenUrl as object ?? DBNull.Value);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -233,11 +234,11 @@ namespace Skiniverse.Controllers
         // GET: /Productos/Eliminar/5
         public IActionResult Eliminar(int id)
         {
-            string conexionString = _configuration.GetConnectionString("ConexionSQL");
+            string? conexionString = _configuration.GetConnectionString("ConexionSQL");
 
             using (SqlConnection conexion = new SqlConnection(conexionString))
             {
-                string query = "DELETE FROM Producto WHERE IdProducto = @Id";
+                string query = "DELETE FROM Productos WHERE IdProducto = @Id";
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand(query, conexion);

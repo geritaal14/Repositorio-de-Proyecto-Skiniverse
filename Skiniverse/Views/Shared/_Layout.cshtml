@@ -83,7 +83,10 @@
                     <div class="d-flex align-items-center gap-3 flex-wrap">
                         <a asp-controller="Home" asp-action="Index" class="text-white text-decoration-none fw-semibold">Inicio</a>
                         <a asp-controller="Productos" asp-action="Catalogo" class="text-white text-decoration-none fw-semibold">Catálogo</a>
-                        <a asp-controller="Productos" asp-action="Index" class="text-white text-decoration-none fw-semibold">Administrar</a>
+
+                        <!-- BOTÓN CORREGIDO PARA APUNTAR A LA VISTA ADMIN -->
+                        <a asp-controller="Productos" asp-action="Admin" class="text-white text-decoration-none fw-semibold">Administrar</a>
+
                         <a asp-controller="Productos" asp-action="TestPiel" class="text-white text-decoration-none fw-semibold">Test de Piel</a>
                         <a asp-controller="Home" asp-action="Privacy" class="text-white text-decoration-none fw-semibold">Privacidad</a>
 
