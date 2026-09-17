@@ -1,50 +1,75 @@
 ﻿@model IEnumerable<Skiniverse.Models.Producto>
 
 @{
-    ViewData["Title"] = "Panel de Administración - Productos";
+    ViewData["Title"] = "Administrar Productos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h2 class="fw-bold" style="color: var(--skin-primary);">Gestión de Productos</h2>
-        <p class="text-muted mb-0">Panel de administración de catálogo Skiniverse</p>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Panel de Administración de Productos</h2>
+        <a asp-action="Crear" class="btn btn-skin-primary">
+            <i class="bi bi-plus-lg me-1"></i> Agregar Nuevo Producto
+        </a>
     </div>
-    <!-- BOTÓN DE AGREGAR MOVIDO A LA VISTA ADMIN -->
-    <a asp-controller="Productos" asp-action="Crear" class="btn text-white fw-semibold" style="background-color: #0F4C81; border-radius: 8px;">
-        <i class="bi bi-plus-lg me-1"></i> Agregar Nuevo Producto
-    </a>
-</div>
 
-<div class="card shadow-sm border-0 rounded-4">
-    <div class="card-body p-0">
+    <div class="card card-skin shadow-sm p-3">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead class="table-dark">
                     <tr>
                         <th>Imagen</th>
-                        <th>Producto</th>
+                        <th>Nombre</th>
                         <th>Categoría</th>
+                        <th>Tipo de Piel</th>
                         <th>Precio</th>
-                        <th class="text-end">Acciones</th>
+                        <th>Stock</th>
+                        <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ImagenUrl))
+                                    {
+                                        <img src="@item.ImagenUrl" alt="@item.NombreProducto" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;" />
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Sin imagen</span>
+                                    }
+                                </td>
+                                <td class="fw-bold">@item.NombreProducto</td>
+                                <td>@item.Categoria</td>
+                                <td>@item.TipoPielRecomendado</td>
+                                <td>$@item.PrecioRegular.ToString("N2")</td>
+                                <td>
+                                    <span class="badge @(item.StockActual > 5 ? "bg-success" : "bg-warning text-dark")">
+                                        @item.StockActual unidades
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Editar" asp-route-id="@item.IdProducto" class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="bi bi-pencil-fill"></i> Editar
+                                    </a>
+                                    <a asp-action="Detalles" asp-route-id="@item.IdProducto" class="btn btn-sm btn-outline-info me-1">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a asp-action="Eliminar" asp-route-id="@item.IdProducto" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Seguro que deseas eliminar este producto?');">
+                                        <i class="bi bi-trash-fill"></i> Borrar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td>
-                                <img src="@item.ImagenUrl" alt="@item.NombreProducto" style="width: 45px; height: 45px; object-fit: contain;" class="rounded" />
-                            </td>
-                            <td class="fw-bold">@item.NombreProducto</td>
-                            <td><span class="badge bg-light text-dark border">@item.Categoria</span></td>
-                            <td class="fw-bold" style="color: var(--skin-primary);">$@item.PrecioRegular.ToString("N0")</td>
-                            <td class="text-end">
-                                <a asp-action="Editar" asp-route-id="@item.IdProducto" class="btn btn-sm btn-outline-primary me-1">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <a asp-action="Eliminar" asp-route-id="@item.IdProducto" class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"></i>
-                                </a>
+                            <td colspan="7" class="text-center py-4 text-muted">
+                                No se encontraron productos registrados en la base de datos.
                             </td>
                         </tr>
                     }
