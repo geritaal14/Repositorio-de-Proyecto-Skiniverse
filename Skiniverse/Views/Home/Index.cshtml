@@ -3,28 +3,40 @@
 }
 
 <style>
-    /* Estilos personalizados en paleta de AZULES (Azul Oscuro, Azul Medio y Azul Claro) */
+    /* Rompe el contenedor global para ocupar todo el ancho visible */
+    .full-width-carousel-wrapper {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     .hero-carousel-container {
-        border-radius: 16px; /* Forma más grande y rectangular */
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 10px 25px rgba(27, 60, 115, 0.08);
         background-color: #ffffff;
+        width: 100%;
     }
 
-    /* Diapositiva 1 - Gradiente Azul Claro */
+    /* Diapositiva 1 - Mayor altura (520px) */
     .hero-banner-slide-1 {
         background: linear-gradient(135deg, #EBF4F6 0%, #D4EBF2 100%);
-        padding: 60px 50px;
-        min-height: 420px;
+        padding: 80px 80px;
+        min-height: 520px;
         display: flex;
         align-items: center;
     }
 
-    /* Diapositiva 2 - Gradiente Azul Medio Soft */
+    /* Diapositiva 2 - Mayor altura (520px) */
     .hero-banner-slide-2 {
         background: linear-gradient(135deg, #DCEEF3 0%, #C3E3EC 100%);
-        padding: 60px 50px;
-        min-height: 420px;
+        padding: 80px 80px;
+        min-height: 520px;
         display: flex;
         align-items: center;
     }
@@ -45,7 +57,7 @@
         color: #ffffff;
         border: none;
         border-radius: 50px;
-        padding: 12px 32px;
+        padding: 14px 36px;
         font-weight: 700;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(27, 60, 115, 0.25);
@@ -57,7 +69,7 @@
             transform: translateY(-2px);
         }
 
-    /* Tarjetas de Categorías en Tonos Azules y Fríos */
+    /* Tarjetas de Categorías */
     .category-card {
         border-radius: 16px;
         padding: 24px 15px 20px 15px;
@@ -112,86 +124,171 @@
         color: #ffffff;
     }
 
-    /* Variaciones de Fondo Azul en Categorías */
-    .bg-cat-azul-1 { background-color: #EBF4F6; }
-    .bg-cat-azul-2 { background-color: #E1F1F5; }
-    .bg-cat-azul-3 { background-color: #D6EDF3; }
-    .bg-cat-azul-4 { background-color: #CCE8F0; }
+    /* Colores de fondo para tarjetas */
+    .bg-cat-azul-1 {
+        background-color: #EBF4F6;
+    }
+
+    .bg-cat-azul-2 {
+        background-color: #E1F1F5;
+    }
+
+    .bg-cat-azul-3 {
+        background-color: #D6EDF3;
+    }
+
+    .bg-cat-azul-4 {
+        background-color: #CCE8F0;
+    }
+
+    .bg-cat-azul-5 {
+        background-color: #C3E3EC;
+    }
+
+    /* Indicadores personalizados para el carrusel de categorías */
+    .categories-indicators [data-bs-target] {
+        background-color: #1B3C73;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 4px;
+    }
+
+    /* Estilos corregidos para la sección Tipo de Piel */
+    .skin-type-card {
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        text-decoration: none !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        min-height: 120px;
+        height: 100%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        padding-right: 15px;
+    }
+
+        .skin-type-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(27, 60, 115, 0.12);
+        }
+
+    .skin-type-img {
+        width: 130px;
+        min-width: 130px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .skin-type-title {
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: #1B3C73;
+        padding: 0 15px;
+        line-height: 1.2;
+    }
+
+    .bg-skin-arrugas {
+        background-color: #D6E4F0;
+    }
+
+    .bg-skin-grasa {
+        background-color: #EBF4F6;
+    }
+
+    .bg-skin-mixta {
+        background-color: #E1F5FE;
+    }
+
+    .bg-skin-normal {
+        background-color: #FCE4EC;
+    }
+
+    .bg-skin-seca {
+        background-color: #FFF8E1;
+    }
+
+    .bg-skin-manchas {
+        background-color: #E8F5E9;
+    }
 </style>
 
-<!-- 1. Carrusel de Banners Rectangular -->
-<div id="heroCarousel" class="carousel slide hero-carousel-container mb-5" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>
+<!-- Banner Superior Amplio -->
+<div class="full-width-carousel-wrapper">
+    <div id="heroCarousel" class="carousel slide hero-carousel-container mb-5" data-bs-ride="carousel" data-bs-pause="false" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
 
-    <div class="carousel-inner">
-        <!-- Diapositiva 1 -->
-        <div class="carousel-item active">
-            <div class="hero-banner-slide-1">
-                <div class="row align-items-center w-100">
-                    <div class="col-lg-7 ps-lg-4">
-                        <span class="badge-blue mb-3">
-                            ✨ Experiencias Skiniverse
-                        </span>
-                        <h1 class="display-4 fw-bold mb-2" style="color: #1B3C73;">
-                            Tu piel, tu propio universo
-                        </h1>
-                        <p class="text-secondary fs-5 mb-4">
-                            Explora productos formulados para devolver el balance, la luz y la textura natural de tu rostro. Una experiencia de skincare hecha a tu medida.
-                        </p>
-                        <a asp-controller="Quiz" asp-action="Index" class="btn btn-skin-blue">
-                            Encuentra tu rutina ideal ✨ <i class="bi bi-arrow-right ms-2"></i>
-                        </a>
+        <div class="carousel-inner">
+            <!-- Diapositiva 1 -->
+            <div class="carousel-item active">
+                <div class="hero-banner-slide-1">
+                    <div class="row align-items-center w-100">
+                        <div class="col-lg-7 ps-lg-4">
+                            <span class="badge-blue mb-3">
+                                ✨ Experiencias Skiniverse
+                            </span>
+                            <h1 class="display-3 fw-bold mb-3" style="color: #1B3C73;">
+                                Tu piel, tu propio universo
+                            </h1>
+                            <p class="text-secondary fs-4 mb-4">
+                                Explora productos formulados para devolver el balance, la luz y la textura natural de tu rostro. Una experiencia de skincare hecha a tu medida.
+                            </p>
+                            <a asp-controller="Quiz" asp-action="Index" class="btn btn-skin-blue fs-5">
+                                Encuentra tu rutina ideal ✨ <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                            <img src="https://static.vecteezy.com/system/resources/previews/057/639/867/large_2x/a-man-and-woman-are-smiling-while-using-facial-products-couple-skincare-routine-photo.jpeg"
+                                 class="img-fluid rounded-4 shadow"
+                                 alt="Beauty Date Skiniverse"
+                                 style="max-height: 400px; width: 100%; object-fit: cover;" />
+                        </div>
                     </div>
-                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                        <img src="https://static.vecteezy.com/system/resources/previews/057/639/867/large_2x/a-man-and-woman-are-smiling-while-using-facial-products-couple-skincare-routine-photo.jpeg"
-                             class="img-fluid rounded-3 shadow-sm"
-                             alt="Beauty Date Skiniverse"
-                             style="max-height: 300px; object-fit: cover;" />
+                </div>
+            </div>
+
+            <!-- Diapositiva 2 -->
+            <div class="carousel-item">
+                <div class="hero-banner-slide-2">
+                    <div class="row align-items-center w-100">
+                        <div class="col-lg-7 ps-lg-4">
+                            <span class="badge-blue mb-3">
+                                🌿 Novedad de Temporada
+                            </span>
+                            <h1 class="display-3 fw-bold mb-3" style="color: #1B3C73;">
+                                Piel Radiante & <span style="color: #028090;">Saludable</span>
+                            </h1>
+                            <p class="text-secondary fs-4 mb-4">
+                                Descubre nuestra selección exclusiva de tónicos, esencias y sérums de alta calidad.
+                            </p>
+                            <a asp-controller="Productos" asp-action="Catalogo" class="btn btn-skin-blue fs-5">
+                                Explorar Catálogo <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                            <img src="https://thumbs.dreamstime.com/b/cosm%C3%A9ticos-antienvejecedores-de-los-pares-de-los-pares-9495551.jpg"
+                                 class="img-fluid rounded-4 shadow"
+                                 alt="Skincare Skiniverse"
+                                 style="max-height: 400px; width: 100%; object-fit: cover;" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Diapositiva 2 -->
-        <div class="carousel-item">
-            <div class="hero-banner-slide-2">
-                <div class="row align-items-center w-100">
-                    <div class="col-lg-7 ps-lg-4">
-                        <span class="badge-blue mb-3">
-                            🌿 Novedad de Temporada
-                        </span>
-                        <h1 class="display-4 fw-bold mb-2" style="color: #1B3C73;">
-                            Piel Radiante & <span style="color: #028090;">Saludable</span>
-                        </h1>
-                        <p class="text-secondary fs-5 mb-4">
-                            Descubre nuestra selección exclusiva de tónicos, esencias y sérums de alta calidad.
-                        </p>
-                        <a asp-controller="Productos" asp-action="Catalogo" class="btn btn-skin-blue">
-                            Explorar Catálogo <i class="bi bi-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                        <img src="https://thumbs.dreamstime.com/b/cosm%C3%A9ticos-antienvejecedores-de-los-pares-de-los-pares-9495551.jpg"
-                             class="img-fluid rounded-3 shadow-sm"
-                             alt="Skincare Skiniverse"
-                             style="max-height: 300px; object-fit: cover;" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Botones de Navegación del Carrusel -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-    </button>
+        <!-- Controles Banner -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
 </div>
 
 <!-- 2. Sección de Categorías -->
@@ -200,56 +297,220 @@
     <p class="text-muted">Explora nuestros productos según las necesidades reales de tu piel</p>
 </div>
 
-<div class="row g-4 mb-5">
-    <!-- Limpiadores -->
-    <div class="col-6 col-md-3">
-        <div class="category-card bg-cat-azul-1">
-            <div class="category-img-wrapper">
-                <img src="https://cocopinkstore.com/cdn/shop/files/espumadolcebella-1.jpg?v=1757108578" alt="Limpiadores En Espuma" />
+<!-- Carrusel de Categorías Automático -->
+<div id="categoriesCarousel" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-pause="false" data-bs-interval="3500">
+    <div class="carousel-inner">
+
+        <!-- Bloque 1: Primeras 5 Categorías -->
+        <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+                <!-- Limpiadores de espuma -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-1">
+                        <div class="category-img-wrapper">
+                            <img src="https://image.made-in-china.com/202f0j00QOTczFgJfMke/Private-Label-Man-Clean-Skin-Facial-Foam-Cleanser-Skin-Care-Multi-Effect-Face-Wash.webp" alt="Limpiadores En Espuma" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Limpiadores En Espuma</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Limpiadores" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tonicos -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-2">
+                        <div class="category-img-wrapper">
+                            <img src="https://miriam.mx/assets/img/_blogTall/7550/Mujer-aplica%CC%81ndose-to%CC%81nico-facial.webp" alt="Tónicos" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Tónicos</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Tónicos" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Esencias -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-3">
+                        <div class="category-img-wrapper">
+                            <img src="https://thumbs.dreamstime.com/b/joven-y-hermosa-mujer-aplicando-s%C3%A9rum-facial-452274362.jpg" alt="Esencias" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Esencias</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Esencias" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Serums -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-4">
+                        <div class="category-img-wrapper">
+                            <img src="https://blog.weareprovital.com/wp-content/uploads/2024/10/serum-para-hombres.jpg" alt="Sérums" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Sérums</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Sérums" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kits Bioaqua -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-5">
+                        <div class="category-img-wrapper">
+                            <img src="https://exitocol.vtexassets.com/arquivos/ids/24962836/rutina-hidratante-de-acido-hialuronico-y-extracto-de-rosas-bioaqua.jpg?v=638635699180000000" alt="Kits Bioaqua" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Kits Bioaqua</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Kits Bioaqua" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
             </div>
-            <h6 class="fw-bold mb-0" style="color: #1B3C73;">Limpiadores En Espuma</h6>
-            <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Limpiadores" class="btn btn-cat-action">
-                Ver catálogo &rarr;
-            </a>
         </div>
+
+        <!-- Bloque 2: Siguiente grupo de categorías -->
+        <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+                <!-- Protectores Labiales -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-1">
+                        <div class="category-img-wrapper">
+                            <img src="https://i5.walmartimages.com/asr/29fff3c5-c37b-40c2-b394-7f6ee0083a53_1.d9a07f7b30c0ad1717f9c081f6c2af32.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Protectores Labiales" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Protectores Labiales</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Protectores Labiales" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+                <!--Mascarillas-->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-1">
+                        <div class="category-img-wrapper">
+                            <img src="https://kromaspace.com/wp-content/uploads/2024/08/kit-mascarilla-antiedad-bioaqua-2.jpg" alt="Mascarillas" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Mascarillas</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Mascarillas" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+                <!--Parches para ojos-->
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="category-card bg-cat-azul-1">
+                        <div class="category-img-wrapper">
+                            <img src="https://slickgorilla.eu/cdn/shop/files/slick-gorilla-eu-hydra-boost-under-eye-patches-3-set-pack-1219351511.jpg?v=1774958674&width=1500" alt="Parches para ojos" />
+                        </div>
+                        <h6 class="fw-bold mb-0" style="color: #1B3C73;">Parches para ojos</h6>
+                        <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Parches para ojos" class="btn btn-cat-action">
+                            Ver catálogo &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Tónicos -->
-    <div class="col-6 col-md-3">
-        <div class="category-card bg-cat-azul-2">
-            <div class="category-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=400&auto=format&fit=crop" alt="Tónicos" />
-            </div>
-            <h6 class="fw-bold mb-0" style="color: #0000;">Tónicos</h6>
-            <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Tónicos" class="btn btn-cat-action">
-                Ver catálogo &rarr;
-            </a>
-        </div>
+    <!-- Puntos de navegación para categorías -->
+    <div class="carousel-indicators categories-indicators position-relative mt-4">
+        <button type="button" data-bs-target="#categoriesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Página 1"></button>
+        <button type="button" data-bs-target="#categoriesCarousel" data-bs-slide-to="1" aria-label="Página 2"></button>
+    </div>
+</div>
+
+<!-- 3. Sección ¿Cuál es tu tipo de piel? -->
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-uppercase" style="color: #1B3C73;">¿CUÁL ES TU TIPO DE PIEL?</h2>
+        <p class="text-muted">¿Sabías que cada tipo de piel necesita un cuidado único? Descubre los consejos y productos que tu piel necesita:</p>
     </div>
 
-    <!-- Esencias -->
-    <div class="col-6 col-md-3">
-        <div class="category-card bg-cat-azul-3">
-            <div class="category-img-wrapper">
-                <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1741728845-uriage-67d0ac29b6b2e.png?crop=1xw:0.9949494949494949xh;center,top&resize=980:*" alt="Esencias" />
-            </div>
-            <h6 class="fw-bold mb-0" style="color: #1B3C73;">Esencias</h6>
-            <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Esencias" class="btn btn-cat-action">
-                Ver catálogo &rarr;
+    <div class="row g-4">
+        <!-- Arrugas -->
+        <div class="col-12 col-md-6">
+            <a asp-controller="Consejos" asp-action="Detalle" asp-route-tipo="arrugas" class="skin-type-card bg-skin-arrugas">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Piel Con Arrugas" class="skin-type-img" />
+                <span class="skin-type-title flex-grow-1">Piel Con Arrugas</span>
+                <span class="text-primary fw-bold small text-nowrap">Leer más <i class="bi bi-chevron-right ms-1"></i></span>
             </a>
         </div>
-    </div>
 
-    <!-- Sérums -->
-    <div class="col-6 col-md-3">
-        <div class="category-card bg-cat-azul-4">
-            <div class="category-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=400&auto=format&fit=crop" alt="Sérums" />
-            </div>
-            <h6 class="fw-bold mb-0" style="color: #1B3C73;">Sérums</h6>
-            <a asp-controller="Productos" asp-action="Catalogo" asp-route-categoria="Sérums" class="btn btn-cat-action">
-                Ver catálogo &rarr;
+        <!-- Piel Grasa -->
+        <div class="col-12 col-md-6">
+            <a asp-controller="Consejos" asp-action="Detalle" asp-route-tipo="grasa" class="skin-type-card bg-skin-grasa">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Piel Grasa" class="skin-type-img" />
+                <span class="skin-type-title flex-grow-1">Piel Grasa</span>
+                <span class="text-primary fw-bold small text-nowrap">Leer más <i class="bi bi-chevron-right ms-1"></i></span>
+            </a>
+        </div>
+
+        <!-- Piel Mixta -->
+        <div class="col-12 col-md-6">
+            <a asp-controller="Consejos" asp-action="Detalle" asp-route-tipo="mixta" class="skin-type-card bg-skin-mixta">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Piel Mixta" class="skin-type-img" />
+                <span class="skin-type-title flex-grow-1">Piel Mixta</span>
+                <span class="text-primary fw-bold small text-nowrap">Leer más <i class="bi bi-chevron-right ms-1"></i></span>
+            </a>
+        </div>
+
+        <!-- Piel Normal -->
+        <div class="col-12 col-md-6">
+            <a asp-controller="Consejos" asp-action="Detalle" asp-route-tipo="normal" class="skin-type-card bg-skin-normal">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Piel Normal" class="skin-type-img" />
+                <span class="skin-type-title flex-grow-1">Piel Normal</span>
+                <span class="text-primary fw-bold small text-nowrap">Leer más <i class="bi bi-chevron-right ms-1"></i></span>
+            </a>
+        </div>
+
+        <!-- Piel Seca -->
+        <div class="col-12 col-md-6">
+            <a asp-controller="Consejos" asp-action="Detalle" asp-route-tipo="seca" class="skin-type-card bg-skin-seca">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80" alt="Piel Seca" class="skin-type-img" />
+                <span class="skin-type-title flex-grow-1">Piel Seca</span>
+                <span class="text-primary fw-bold small text-nowrap">Leer más <i class="bi bi-chevron-right ms-1"></i></span>
+            </a>
+        </div>
+
+        <!-- Manchas -->
+        <div class="col-12 col-md-6">
+            <a asp-controller="Consejos" asp-action="Detalle" asp-route-tipo="manchas" class="skin-type-card bg-skin-manchas">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&q=80" alt="Piel Con Manchas" class="skin-type-img" />
+                <span class="skin-type-title flex-grow-1">Piel Con Manchas</span>
+                <span class="text-primary fw-bold small text-nowrap">Leer más <i class="bi bi-chevron-right ms-1"></i></span>
             </a>
         </div>
     </div>
 </div>
+
+<!-- Script de ejecución automática ininterrumpida -->
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Inicialización Banner Principal
+            var heroElement = document.querySelector('#heroCarousel');
+            if (heroElement) {
+                var heroCarousel = new bootstrap.Carousel(heroElement, {
+                    interval: 3000,
+                    ride: 'carousel',
+                    pause: false
+                });
+                heroCarousel.cycle();
+            }
+
+            // Inicialización Carrusel de Categorías
+            var categoriesElement = document.querySelector('#categoriesCarousel');
+            if (categoriesElement) {
+                var categoriesCarousel = new bootstrap.Carousel(categoriesElement, {
+                    interval: 3500,
+                    ride: 'carousel',
+                    pause: false
+                });
+                categoriesCarousel.cycle();
+            }
+        });
+    </script>
+}
