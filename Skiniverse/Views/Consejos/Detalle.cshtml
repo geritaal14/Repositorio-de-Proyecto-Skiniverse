@@ -1,0 +1,105 @@
+﻿@{
+    var tipoPiel = (ViewData["TipoPiel"] as string ?? "general").ToLower();
+    ViewData["Title"] = $"Consejos - {tipoPiel.ToUpper()}";
+}
+
+<div class="container my-5">
+    <div class="p-4 p-md-5 mb-4 rounded-4 shadow-sm" style="background-color: #ffffff;">
+        
+        @switch (tipoPiel)
+        {
+            case "arrugas":
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Cuidado Para: Arrugas y Envejecimiento</h1>
+                <p class="fs-5 text-muted mb-4">Con el paso del tiempo, la piel pierde colágeno y elasticidad. El objetivo principal es nutrir profundamente y estimular la renovación celular.</p>
+                <hr class="my-4" />
+                
+                <h4 class="fw-bold mb-3" style="color: #028090;">💡 Rutina y Consejos Clave:</h4>
+                <ul class="fs-5 text-secondary mb-4">
+                    <li class="mb-2"><strong>Protección Solar Diaria:</strong> El sol es el responsable de hasta el 80% de los signos visibles de envejecimiento. Usa SPF 50+ todos los días.</li>
+                    <li class="mb-2"><strong>Ingredientes Clave:</strong> Busca sérums y cremas enriquecidas con <em>Retinol, Peptidos, Ácido Hialurónico</em> y <em>Vitamina C</em>.</li>
+                    <li class="mb-2"><strong>Hidratación Profunda:</strong> Las pieles maduras o con líneas marcadas necesitan fórmulas con textura más rica para retener la humedad nocturna.</li>
+                </ul>
+                
+                break;
+
+            case "grasa":
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Cuidado Para: Piel Grasa</h1>
+                <p class="fs-5 text-muted mb-4">La piel grasa se caracteriza por una sobreproducción de sebo, brillo visible y poros dilatados. La clave es regular sin resecar.</p>
+                <hr class="my-4" />
+                
+                <h4 class="fw-bold mb-3" style="color: #028090;">💡 Rutina y Consejos Clave:</h4>
+                <ul class="fs-5 text-secondary mb-4">
+                    <li class="mb-2"><strong>Limpieza Suave pero Efectiva:</strong> Lavo tu rostro dos veces al día con geles o espumas limpiadoras reguladoras. No uses jabones agresivos.</li>
+                    <li class="mb-2"><strong>Ingredientes Clave:</strong> <em>Niacinamida, Ácido Salicílico (BHA)</em> y <em>Árbol de Té</em> son tus mejores aliados para limpiar poros y controlar brillo.</li>
+                    <li class="mb-2"><strong>Hidratantes Gel o Libre de Aceite:</strong> Aunque tu piel produzca grasa, necesita agua. Elige texturas ligeras tipo gel o acuosas.</li>
+                </ul>
+             
+                break;
+
+            case "mixta":
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Cuidado Para: Piel Mixta</h1>
+                <p class="fs-5 text-muted mb-4">Combina una Zona T brillante (frente, nariz y barbilla) con mejillas normales o secas. Busca el equilibrio perfecto de hidratación.</p>
+                <hr class="my-4" />
+                
+                <h4 class="fw-bold mb-3" style="color: #028090;">💡 Rutina y Consejos Clave:</h4>
+                <ul class="fs-5 text-secondary mb-4">
+                    <li class="mb-2"><strong>Equilibrio pH:</strong> Utiliza tónicos equilibrantes después de la limpieza para restaurar la barrera cutánea sin saturar la piel.</li>
+                    <li class="mb-2"><strong>Ingredientes Clave:</strong> <em>Ácido Hialurónico, Centella Asiática</em> y <em>Niacinamida</em> para calmar e hidratar de manera uniforme.</li>
+                    <li class="mb-2"><strong>Cuidado Focalizado:</strong> Puedes aplicar mascarillas purificantes solo en la zona T e hidratantes ricas en las mejillas.</li>
+                </ul>
+         
+                break;
+
+            case "normal":
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">¿Que es la piel normal?</h1>
+                <p class="fs-5 text-muted mb-4">"Normal" es un término utilizado ampliamente para referirse a la piel bien equilibrada. El término científico para piel sana es eudérmica. Aunque la zona T (frente, mentón y nariz) puede ser algo grasa, el sebo y la humedad globales están equilibrados y la piel no es demasiado grasa ni demasiado seca.</p>
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Identificación de la piel normal</h1>
+                <ul class="fs-5 text-muted mb-4">
+                    <li class="mb-2"><strong>Poros Finos:</strong> Buena circulación sanguínea.</li>
+                    <li class="mb-2"><strong>Textura Aterciopelada:</strong> Suave y lisa.</li>
+                    <li class="mb-2"><strong>Transparencia Uniforme:</strong> Color rosado, fresco. Ausencia de impurezas.</li>
+                    <li class="mb-2"><strong>No Propensa a la Sensibilidad:</strong> La piel normal no suele reaccionar fácilmente a productos o factores externos.</li>
+                </ul>
+              
+            break;
+         
+            case "seca":
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Cuidado Para: Piel Seca</h1>
+                <p class="fs-5 text-muted mb-4">Carece de lípidos y retención de humedad, lo que puede provocar tirantez, descamación y falta de brillo.</p>
+                <hr class="my-4" />
+                
+                <h4 class="fw-bold mb-3" style="color: #028090;">💡 Rutina y Consejos Clave:</h4>
+                <ul class="fs-5 text-secondary mb-4">
+                    <li class="mb-2"><strong>Evita la Limpieza Agresiva:</strong> Utiliza limpiadores cremosos o en aceite que retiren impurezas sin despojar la piel de sus aceites naturales.</li>
+                    <li class="mb-2"><strong>Ingredientes Clave:</strong> <em>Ceramidas, Ácido Hialurónico, Escualano</em> y <em>Aceites Nutritivos</em>.</li>
+                    <li class="mb-2"><strong>Capa sobre Capa (Layering):</strong> Aplica tónicos hidratantes, sérums humectantes y sella siempre con una crema nutritiva densa.</li>
+                </ul>
+           
+                break;
+
+            case "manchas":
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Cuidado Para: Manchas e Hiperpigmentación</h1>
+                <p class="fs-5 text-muted mb-4">Las manchas pueden ser provocadas por la exposición solar, cambios hormonales o marcas de acné. Se busca unificar el tono cutáneo.</p>
+                <hr class="my-4" />
+                
+                <h4 class="fw-bold mb-3" style="color: #028090;">💡 Rutina y Consejos Clave:</h4>
+                <ul class="fs-5 text-secondary mb-4">
+                    <li class="mb-2"><strong>Fotoprotección Rigurosa:</strong> Reapplica tu protector solar cada 2-3 horas para evitar que las manchas se oscurezcan.</li>
+                    <li class="mb-2"><strong>Ingredientes Despigmentantes:</strong> <em>Vitamina C, Ácido Kójico, Arbutina, Ácido Tranexámico</em> y <em>Niacinamida</em>.</li>
+                    <li class="mb-2"><strong>Exfoliación Quimica Suave:</strong> Usa exfoliantes con AHA (como el Ácido Glicólico o Láctico) de 1 a 2 veces por semana para renovar la piel.</li>
+                </ul>
+                break;
+
+            default:
+                <h1 class="display-5 fw-bold text-uppercase" style="color: #1B3C73;">Consejos para el Cuidado de la Piel</h1>
+                <p class="fs-5 text-muted mb-4">Explora nuestros consejos personalizados según cada tipo de piel y encuentra la rutina perfecta para ti.</p>
+                break;
+        }
+
+        <div class="mt-4 pt-3 border-top">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4">
+                <i class="bi bi-arrow-left me-1"></i> Volver al inicio
+            </a>
+        </div>
+    </div>
+</div>
